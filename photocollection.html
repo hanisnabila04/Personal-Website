@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Collection - Professional Portfolio</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #E5E7E9;
+            --secondary-color: #333;
+            --accent-color: #666;
+            --background-color: #989FA0;
+            --text-color: #989FA0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #6E6E6E;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ccc;
+        }
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        /* Photo Collection Specific Styles */
+        .photo-header {
+            margin-top: 80px;
+            padding: 7rem;
+            text-align: center;
+            color: white;
+        }
+
+        .photo-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .photo-header p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* Fixed photo grid styles */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0rem;
+        }
+        
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            aspect-ratio: 1;
+            width: 100%;
+        }
+        
+        .photo-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            padding: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -2rem;
+            right: -2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+        /* Pop-out animation for photo items */
+        @keyframes popOut {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .photo-item.pop {
+            animation: popOut 0.3s ease-in-out;
+        }
+        
+        /* Enhanced modal transition */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+            display: flex;
+        }
+        
+        .modal-content {
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: #989FA0;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+        
+        /* Mobile responsive */        
+        @media (max-width: 1024px) {
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .photo-header h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar">
+            <div class="logo"><img src="images/logodesign.png">
+                <div class="nav-links">
+                    <a href="index.html">HOME</a>
+                    <a href="about.html">ABOUT ME</a>
+                    <a href="hobby.html">HOBBY</a>
+                    <a href="photocollection.html">PHOTO COLLECTION</a>
+                    <a href="contact.html">CONTACT ME</a>
+                    </nav>
+                </div>
+                
+                <header class="photo-header">
+                    <h1>Baella's Photo Collection</h1>
+                    <p>A curated collection of my favorite moments captured through the lens</p>
+                </header>
+                
+                <div class="photo-grid">
+                    <!-- Original photos -->
+                    <div class="photo-item">
+                        <img src="images/im1.jpeg" alt="Photo 1">
+                        <div class="photo-caption">Portraits</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im2.jpeg" alt="Photo 2">
+                        <div class="photo-caption">Beach Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im3.jpeg" alt="Photo 3">
+                        <div class="photo-caption">Sunkissed Selfie</div>
+                    </div>
+                    <!-- Additional photos -->
+                    <div class="photo-item">
+                        <img src="images/im4.jpeg" alt="Photo 4">
+                        <div class="photo-caption">Car Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im5.jpeg" alt="Photo 5">
+                        <div class="photo-caption">Me and Papa</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im6.jpeg" alt="Photo 6">
+                        <div class="photo-caption">Our Raya Family Photo</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im7.jpeg" alt="Photo 7">
+                        <div class="photo-caption">Safari Park Visits With Family</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im8.jpeg" alt="Photo 8">
+                        <div class="photo-caption">Me and Mama</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im9.jpeg" alt="Photo 9">
+                        <div class="photo-caption">Before Meeting Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im10.jpeg" alt="Photo 10">
+                        <div class="photo-caption">Raya Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im11.jpeg" alt="Photo 11">
+                        <div class="photo-caption">Before Work Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im12.jpeg" alt="Photo 12">
+                        <div class="photo-caption">After Work Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im13.jpeg" alt="Photo 13">
+                        <div class="photo-caption">At Class Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im14.jpeg" alt="Photo 14">
+                        <div class="photo-caption">Beach Selfie With Friend</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im15.jpeg" alt="Photo 15">
+                        <div class="photo-caption">Outing Day With Housemates</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im16.jpeg" alt="Photo 16">
+                        <div class="photo-caption">Car Events Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im21.jpeg" alt="Photo 17">
+                        <div class="photo-caption">Sunset Lover </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im23.jpeg" alt="Photo 18">
+                        <div class="photo-caption">Mosque Hunting</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im22.jpeg" alt="Photo 19">
+                        <div class="photo-caption">River Visits</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im24.jpeg" alt="Photo 20">
+                        <div class="photo-caption">Snapchat Filter</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im17.jpeg" alt="Photo 21">
+                        <div class="photo-caption">Lunch With My Leader </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/im18.jpeg" alt="Photo 22">
+                        <div class="photo-caption">Dinner With Interners</div>
+                    </div>
+                    
+                    <div class="photo-item">
+                        <img src="images/111.jpeg" alt="Photo 25">
+                        <div class="photo-caption">Car Selfie </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/112.jpeg" alt="Photo 26">
+                        <div class="photo-caption">Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/113.jpeg" alt="Photo 27">
+                        <div class="photo-caption">Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/114.jpeg" alt="Photo 28">
+                        <img src="images/111.jpeg" alt="Photo 29">
+                        <div class="photo-caption">Selfie</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/222.jpeg" alt="Photo 30">
+                        <div class="photo-caption">Sunset Hunting with Friends</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/223.jpeg" alt="Photo 31">
+                        <div class="photo-caption">River Hunting with Friends</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/225.jpeg" alt="Photo 32">
+                        <div class="photo-caption">Me and My Siblings</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/224.jpeg" alt="Photo 33">
+                        <div class="photo-caption">Me and My Classmates</div>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Modal for enlarged photos -->
+                <div class="modal" id="photoModal">
+                    <div class="modal-content">
+                        <button class="close-modal">&times;</button>
+                        <img src="" alt="Enlarged photo" id="modalImage">
+                        <div class="modal-caption" id="modalCaption"></div>
+                    </div>
+                </div>
+                
+                <footer>
+                    <p>&copy; 2024 Professional Portfolio. All rights reserved.</p>
+                </footer>
+                <script>
+                    // Keep existing modal functionality and add pop animation
+                    const modal = document.getElementById('photoModal');
+                    const modalImg = document.getElementById('modalImage');
+                    const modalCaption = document.getElementById('modalCaption');
+                    const closeBtn = document.querySelector('.close-modal');
+                    
+                    // Add click event to all photo items with pop animation
+                    document.querySelectorAll('.photo-item').forEach(item => {
+                        item.addEventListener('click', function() {
+                            const img = this.querySelector('img');
+                            const caption = this.querySelector('.photo-caption');
+                            
+                            // Add pop animation
+                            this.classList.add('pop');
+                            
+                            // Remove animation class after it completes
+                            setTimeout(() => {
+                                this.classList.remove('pop');
+                            }, 300);
+                            
+                            // Show modal with image
+                            modal.classList.add('active');
+                            modalImg.src = img.src;
+                            modalCaption.textContent = caption.textContent;
+                        });
+                    });
+                    
+                    // Keep existing close modal functionality
+                    closeBtn.addEventListener('click', () => {
+                        modal.classList.remove('active');
+                    });
+                    
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.classList.remove('active');
+                        }
+                    });
+                    
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && modal.classList.contains('active')) {
+                            modal.classList.remove('active');
+                        }
+                    });
+                </script>    
+    <script>
+        // Photo modal functionality
+        const modal = document.getElementById('photoModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.close-modal');
+
+        // Add click event to all photo items
+        document.querySelectorAll('.photo-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const caption = this.querySelector('.photo-caption');
+                
+                modal.classList.add('active');
+                modalImg.src = img.src;
+                modalCaption.textContent = caption.textContent;
+            });
+        });
+
+        // Close modal when clicking the close button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

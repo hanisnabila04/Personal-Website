@@ -1,0 +1,242 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #E5E7E9;
+            --secondary-color: #333;
+            --accent-color: #666;
+            --background-color: #989FA0;
+            --text-color: #989FA0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding-top: 80px;
+        }
+        
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #6E6E6E;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        /* New Contact Section Styles */
+        .contact-container {
+            max-width: 800px;
+            margin: 8rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .clock {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .contact-info li i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-form button {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: #989FA0;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar">
+            <div class="logo"><img src="images/logodesign2.png">
+                <div class="nav-links">
+                    <a href="index.html">HOME</a>
+                    <a href="about.html">ABOUT ME</a>
+                    <a href="hobby.html">HOBBY</a>
+                    <a href="photocollection.html">PHOTO COLLECTION</a>
+                    <a href="contact.html">CONTACT ME</a>
+                    </nav>
+                </div>
+        
+        <div class="contact-container">
+            <div class="clock" id="clock"></div>
+            
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Sungai Buloh, Selangor.</li>
+                    <li><i class="fas fa-phone"></i> +601127584254</li>
+                    <li><i class="fas fa-envelope"></i> nisbella04@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 10:00 PM</li>
+                </ul>
+            </div>
+            
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="notification" id="notification">
+            Message sent successfully!
+        </div>
+        
+        <script>
+            // Clock functionality
+            function updateClock() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString();
+                document.getElementById('clock').textContent = timeString;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+            
+            // Form submission and notification
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                
+                // Hide notification after 3 seconds
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+                
+                // Clear form
+                this.reset();
+            });
+            
+            // Add hover animation to list items
+            document.querySelectorAll('.contact-info li').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(10px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        </script>
+                <footer>
+                    <p>&copy;  2024 BaellaGallery. All rights reserved.</p>
+                </footer>
+                </body>
+            

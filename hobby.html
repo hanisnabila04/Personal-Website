@@ -1,0 +1,292 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobby Section</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #E5E7E9;
+            --secondary-color: #333;
+            --accent-color: #666;
+            --background-color: #989FA0;
+            --text-color: #black;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #6E6E6E;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ccc;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: #989FA0;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        /* Hobby Section */
+        .hobby-section {
+            max-width: 1200px;
+            margin: 7rem auto;
+            padding: 1rem;
+            background: #989FA0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hobby-section h1 {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .photo-topic {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .photo-topic h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Table Styles */
+        .hobby-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .hobby-table th, .hobby-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .hobby-table th {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        /* Mobile responsive */        
+        @media (max-width: 768px) {
+            .hobby-section {
+                padding: 1rem;
+            }
+
+            .photo-topic h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar">
+            <div class="logo"><img src="images/logodesign.png">
+                <div class="nav-links">
+                    <a href="index.html">HOME</a>
+                    <a href="about.html">ABOUT ME</a>
+                    <a href="hobby.html">HOBBY</a>
+                    <a href="photocollection.html">PHOTO COLLECTION</a>
+                    <a href="contact.html">CONTACT ME</a>
+                </div>
+        </nav>
+                
+    <div class="hobby-section">
+        <h1>My Hobbies</h1>
+        <div class="photo-topic">
+            <h2>Photography</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/ph1.jpeg" alt="Photography Photo 1">
+            <img src="images/ph2.jpeg" alt="Photography Photo 2">
+            <img src="images/ph3.jpeg" alt="Photography Photo 3">
+            <img src="images/ph4.jpeg" alt="Photography Photo 4">
+            <img src="images/ph5.jpeg" alt="Photography Photo 5">  
+            <img src="images/ph6.jpeg" alt="Photography Photo 6">  
+
+        </div>
+
+        <div class="photo-topic" style="margin-top: 3rem;">
+            <h2>Watch Sunset and Beach</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/sb1.jpeg" alt="Sunset Photo 1">
+            <img src="images/sb2.jpeg" alt="Sunset Photo 2">
+            <img src="images/sb3.jpeg" alt="Sunset Photo 3">
+            <img src="images/sb4.jpeg" alt="Sunset Photo 4">
+            <img src="images/sb5.jpeg" alt="Sunset Photo 5">
+            <img src="images/sb6.jpeg" alt="Sunset Photo 6">
+        </div>
+        
+        <div class="photo-topic" style="margin-top: 3rem;">
+            <h2>Shopping</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/sh1.jpeg" alt="Shopping Photo 1">
+            <img src="images/sh2.jpeg" alt="Shopping Photo 2">
+            <img src="images/sh3.jpeg" alt="Shopping Photo 3">
+            <img src="images/sh4.jpeg" alt="Shopping Photo 4">
+            <img src="images/sh.jpeg" alt="Shopping Photo 4">
+            <img src="images/sh6.jpeg" alt="Shopping Photo 4">
+            
+        </div>
+        
+        <div class="photo-topic" style="margin-top: 3rem;">
+            <h2>Went to Concerts</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/c1.jpeg" alt="Concerts Photo 1">
+            <img src="images/c3.jpeg" alt="Concerts Photo 2">
+            <img src="images/c2.jpeg" alt="Concerts Photo 3">
+        </div>
+        
+        <div class="photo-topic" style="margin-top: 3rem;">
+            <h2>Joining Car Events</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/ce1.jpeg" alt="Car Events Photo 1">
+            <img src="images/ce5.jpeg" alt="Car Events Photo 2">
+            <img src="images/ce3.jpeg" alt="Car Events Photo 3">
+            <img src="images/ce4.jpeg" alt="Car Events Photo 4">
+            <img src="images/ce6.jpeg" alt="Car Events Photo 5">
+            <img src="images/ce2.jpeg" alt="Car Events Photo 6">
+            
+        </div>
+        <div class="photo-topic" style="margin-top: 3rem;">
+            <h2>Explore Fun Theme Park and Waterpark</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/tp1.jpeg" alt="Theme Park Photo 1">
+            <img src="images/tp6.jpeg" alt="Theme Park Photo 2">
+            <img src="images/tp3.jpeg" alt="Theme Park Photo 3">
+            <img src="images/tp4.jpeg" alt="Theme Park Photo 4">
+            <img src="images/tp5.jpeg" alt="Theme Park Photo 5">
+            <img src="images/tp66.jpeg" alt="Theme Park Photo 6">
+
+        </div>
+
+        <div class="photo-topic" style="margin-top: 3rem;">
+            <h2>Food and Cafe Hunting with Friends</h2>
+        </div>
+        <div class="gallery">
+            <img src="images/fh1.jpeg" alt="Food Photo 1">
+            <img src="images/fh2.jpeg" alt="Food Photo 2">
+            <img src="images/fh4.jpeg" alt="Food Photo 3">
+        </div>
+
+        
+        <table class="hobby-table">
+            <thead>
+                <tr>
+                    <th>Hobby</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Photography</td>
+                    <td>Capturing moments that speak a thousand words.</td>
+                </tr>
+                <tr>
+                    <td>Watch Sunset and Beach</td>
+                    <td>Finding peace in golden skies and ocean whispers.</td>
+                </tr>
+                <tr>
+                    <td>Shopping</td>
+                    <td>Discovering treasures and expressing style.</td>
+                </tr>
+                <tr>
+                    <td>Went to Concerts</td>
+                    <td>Feeling alive in the rhythm of live music.</td>
+                </tr>
+                <tr>
+                    <td>Joining Car Events</td>
+                    <td>Celebrating speed, style, and roaring engines.</td>
+                </tr>
+                <tr>
+                    <td>Explore Fun Theme Park and Waterpark</td>
+                    <td>Chasing thrills and endless laughter.</td>
+                </tr>
+                <tr>
+                    <td>Food and Cafe Hunting with Friends</td>
+                    <td>Sharing flavors and moments with friends.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+            <footer>
+                <p>&copy;  2024 BaellaGallery. All rights reserved.</p>
+            </footer>
+    
+        </body>
+    </html>
+                

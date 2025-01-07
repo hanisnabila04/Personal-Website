@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #E5E7E9;
+            --secondary-color: #333;
+            --accent-color: #666;
+            --background-color: #989FA0;
+            --text-color: #989FA0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        /* Navigation styles */
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #6E6E6E;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ccc;
+        }
+        
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Slideshow styles */
+        .hero-section {
+            margin-top: 60px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 1400px;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #BCC6CC;
+            background: rgba(0,0,0,0.5);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .text-overlay h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1rem;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .prev { left: 0; }
+        .next { right: 0; }
+
+        .dots-container {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Content styles */
+        .content-grid {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0rem;
+        }
+
+        .featured-work {
+            margin: 4rem 0;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .work-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .work-item h3 {
+            padding: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .work-item p {
+            padding: 0 1rem 1rem;
+            color: var(--accent-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: #989FA0;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="images/logodesign.png">
+            <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT ME</a>
+            <a href="hobby.html">HOBBY</a>
+            <a href="photocollection.html">PHOTO COLLECTION</a>
+            <a href="contact.html">CONTACT ME</a>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="images/imagebaella1.jpeg" alt="Professional shot">
+                <div class="text-overlay">
+                    <h1>Welcome to Baella's Gallery 𖤐</h1>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="images/image2baella.jpeg" alt="Project showcase">
+                <div class="text-overlay">
+                    <h1>Lifestyle and Education</h1>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="images/image3baella.jpeg" alt="Skills showcase">
+                <div class="text-overlay">
+                    <h1>Interest & Photo Gallery</h1>
+                </div>
+            </div>
+
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
+    <main class="content-grid">
+        <section class="featured-work">
+            <h2>Featured Work</h2>
+            <div class="work-grid">
+                <div class="work-item">
+                    <p  align="center"><b>This websites design to describe Baella's Life: Moments & Memories</b></p>
+                    <p  align="center">A glimpse into Baella’s world through stories and photos.</p>
+                    <h3 align="center">MEMORIES</h3>
+                    <p align="center">Precious moments with loved ones,captured forever in the heart.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy;  2024 BaellaGallery. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Auto advance slides
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Navigation active state
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

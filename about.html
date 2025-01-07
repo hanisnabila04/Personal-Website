@@ -1,0 +1,307 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #E5E7E9;
+            --secondary-color: #333;
+            --accent-color: #666;
+            --background-color: #989FA0;
+            --text-color: #989FA0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #6E6E6E;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ccc;
+        }
+
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* About section */
+        .services {
+            padding: 3rem 4rem;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Life section */
+        .about {
+            padding: 3rem 3rem;
+            background: var(--primary-color);
+            color: #6E6E6E;
+        }
+        
+        .about-content {
+            max-width: 1200px;
+            margin: 5 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18rem;
+            align-items: center;
+        }
+        
+        /* Describe section */
+        .contact {
+            padding: 3rem 2rem;
+            background: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--accent-color);
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: #989FA0;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+        
+        /* Mobile responsive */        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar">
+            <div class="logo"><img src="images/logodesign.png">
+                <div class="nav-links">
+                    <a href="index.html">HOME</a>
+                    <a href="about.html">ABOUT ME</a>
+                    <a href="hobby.html">HOBBY</a>
+                    <a href="photocollection.html">PHOTO COLLECTION</a>
+                    <a href="contact.html">CONTACT ME</a>
+                </nav>
+                </div>
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Welcome to Baella's Story</h1>
+                        <p>Pieces of Baella's Life</p>
+                        <a href="#contact" class="btn">Get in Touch</a>
+
+                    </div>
+                </section>
+                
+                <!-- Services Section -->
+                <section class="services" id="services">
+                    <div class="section-title">
+                        <h2>About Baella</h2>
+                        <p>Personal Information and Education</p>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Background Information</h3>
+                            <p>Name: Hanis Nabila binti Mohd Faizal</p>
+                            <p>Date of Birth: 23 April 2004</p>
+                            <p>Address: Sungai Buloh, Selangor</p>
+                            <p>Contact Information: 01127584254</p>
+
+                        </div>
+                        <div class="service-card">
+                            <h3>Education</h3>
+                            <p>Primary School: SK Kepong (FRIM) / SK Desa Amanpuri / SK Desa Aman </p>
+                            <p>(2011-2016)</p>
+                            <p>Secondary School: SAM Paya Jaras / SMK Saujana Utama </p>
+                            <p>(2017-2021)</p>
+                            <p>University: Diploma in Information Management, UiTM Rembau </p>
+
+                        </div>
+                        <div class="service-card">
+                            <h3>Language</h3>
+                            <p>Malay</p>
+                            <p>English</p>
+                            <p>Arabic</p>
+                            <h3>Other's Information</h3>
+                            <p>Baella's Resume - <a href="download/resume.pdf" target="_blank">Download</a> Here</p>
+                     <iframe class="pdf" src="download/resume.pdf" width="200" height="200">
+                     </iframe>
+                </section>
+                        </div>
+
+                        
+                <!-- About Section -->
+                <section class="about" id="about">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>Life So Far</h2>
+                            <p>Enjoying concerts, car racing events, countless beach visits, photography, study, mosque hunting, funfair rides, and unforgettable quality times with friends...</p>
+                            <video controls autoplay muted loop width="800" height="500">
+                                <source src="video/baellavid.mp4" type="video/mp4">
+                            </video>
+                            
+                            <!-- Caption and Audio Section -->
+                            <div class="caption-container">
+                                <img src="images/audio.jpeg" alt="Current Favorite Song">
+                                <p>My Current Favorite Song</p>
+                            </div>
+                            
+                            <!-- Audio Player -->
+                            <audio controls>
+                                <source src="audio/spoti.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </section>                
+                <!-- Describe Section -->
+                <section class="contact" id="contact">
+                    <div class="section-title">
+                        <h2>Describe Me </h2>
+                        <p>Let's Get To Know Each Other!</p>
+                    </div>
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="What can you describe about me">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Tell me about you" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                            <p><a href="#top">Jump to top page</a></p>
+
+                        </form>
+                    </div>
+                </section>
+    <footer>
+        <p>&copy;  2024 BaellaGallery. All rights reserved.</p>
+    </footer>
+    </script>
+</body>
+</html>
